@@ -87,4 +87,31 @@ export default class HashTable<T> {
         // Return `this` to allow method chaining.
         return this;
     }
+
+    /**
+     * Retrieves the value associated with the given key in the hash table.
+     *
+     * @param {string} key The key whose associated value is to be retrieved.
+     * @returns {T | undefined} The value associated with the key, or `undefined` if the key doesn't exist.
+     *
+     * @remarks
+     * The `get` method uses the hash function to compute the index for the provided key and checks if the key exists in the corresponding bucket.
+     * If the key is found, the associated value is returned. If the key is not found or the bucket is empty, the method returns `undefined`.
+     *
+     * **Example**:
+     * For a hash table with `dataMap.length = 7`:
+     * - `get("cat")` retrieves the value associated with the key `"cat"` at the appropriate index.
+     * - `get("dog")` retrieves the value for `"dog"`, or returns `undefined` if the key is not present.
+     */
+    get(key: string) {
+        const index = this._hash(key);
+        if (this.dataMap[index]) {
+            for (let i = 0; i < this.dataMap[index].length; i++) {
+                if (this.dataMap[index][i][0] === key) {
+                    return this.dataMap[index][i][1];
+                }
+            }
+        }
+        return undefined;
+    }
 }
