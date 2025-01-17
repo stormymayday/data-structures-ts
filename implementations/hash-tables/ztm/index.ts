@@ -12,4 +12,13 @@ export default class HashTable<T> {
         }
         return hash;
     }
+
+    set(key: string, value: T) {
+        const address = this._hash(key);
+        if (!this.data[address]) {
+            this.data[address] = [];
+        }
+        this.data[address].push([key, value]);
+        return this.data;
+    }
 }
