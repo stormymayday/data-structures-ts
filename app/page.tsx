@@ -5,9 +5,11 @@ import HashTable from "@/implementations/hash-tables/barrett";
 const myHashTable = new HashTable();
 console.log(myHashTable);
 myHashTable.set("grapes", 123);
+myHashTable.set("bananas", 123);
 console.log(myHashTable);
 console.log(myHashTable.get("banana"));
 console.log(myHashTable.get("grapes"));
+console.log(myHashTable.keys());
 
 export default function Home() {
     return (

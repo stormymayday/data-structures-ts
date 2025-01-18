@@ -114,4 +114,18 @@ export default class HashTable<T> {
         }
         return undefined;
     }
+
+    keys() {
+        const keys = [];
+        for (let i = 0; i < this.dataMap.length; i++) {
+            if (this.dataMap[i]) {
+                for (let j = 0; j < this.dataMap[i].length; j++) {
+                    if (this.dataMap[i][j].length) {
+                        keys.push(this.dataMap[i][j][0]);
+                    }
+                }
+            }
+        }
+        return keys;
+    }
 }
