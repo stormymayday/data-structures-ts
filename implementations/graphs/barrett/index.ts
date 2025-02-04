@@ -21,4 +21,17 @@ export default class Graph {
         }
         return false;
     }
+
+    removeEdge(vertex1: string, vertex2: string): boolean {
+        if (this.adjacencyList[vertex1] && this.adjacencyList[vertex2]) {
+            this.adjacencyList[vertex1] = this.adjacencyList[vertex1].filter(
+                (v) => v !== vertex2
+            );
+            this.adjacencyList[vertex2] = this.adjacencyList[vertex2].filter(
+                (v) => v !== vertex1
+            );
+            return true;
+        }
+        return false;
+    }
 }
