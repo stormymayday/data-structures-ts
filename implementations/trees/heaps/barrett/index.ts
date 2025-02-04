@@ -16,4 +16,12 @@ export default class Heap {
         // root at index 0
         return 2 * index + 1;
     }
+
+    private rightChild(index: number) {
+        // root at index 1
+        // return 2 * index + 1;
+
+        // root at index 0
+        return 2 * index + 2;
+    }
 }
