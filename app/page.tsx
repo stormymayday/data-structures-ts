@@ -1,30 +1,25 @@
 "use client";
 
-// import HashTable from "@/implementations/hash-tables/barrett";
-import Graph from "@/implementations/graphs/barrett";
+import Graph from "@/implementations/graphs/ztm";
 
-const newGraph = new Graph();
-console.log(newGraph);
+const myGraph = new Graph();
+myGraph.addVertex("0");
+myGraph.addVertex("1");
+myGraph.addVertex("2");
+myGraph.addVertex("3");
+myGraph.addVertex("4");
+myGraph.addVertex("5");
+myGraph.addVertex("6");
+myGraph.addEdge("3", "1");
+myGraph.addEdge("3", "4");
+myGraph.addEdge("4", "2");
+myGraph.addEdge("4", "5");
+myGraph.addEdge("1", "2");
+myGraph.addEdge("1", "0");
+myGraph.addEdge("0", "2");
+myGraph.addEdge("6", "5");
 
-console.log(newGraph.addVertex("A"));
-console.log(newGraph.addVertex("B"));
-console.log(newGraph.addVertex("C"));
-console.log(newGraph.addVertex("D"));
-
-console.log(newGraph.addEdge("A", "B"));
-console.log(newGraph.addEdge("A", "C"));
-console.log(newGraph.addEdge("A", "D"));
-
-console.log(newGraph.addEdge("B", "D"));
-
-console.log(newGraph.addEdge("C", "D"));
-console.log(newGraph);
-
-console.log(newGraph.removeVertex("D"));
-console.log(newGraph);
-
-console.log(newGraph.removeVertex("E"));
-console.log(newGraph);
+myGraph.showConnections();
 
 export default function Home() {
     return (
