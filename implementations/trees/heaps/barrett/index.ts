@@ -4,4 +4,8 @@ export default class Heap {
     constructor() {
         this.heap = [];
     }
+
+    getHeap() {
+        return [...this.heap];
+    }
 }
