@@ -1,7 +1,0 @@
-export default class Graph {
-    private adjacencyList: { [key: string]: string[] };
-
-    constructor() {
-        this.adjacencyList = {};
-    }
-}
