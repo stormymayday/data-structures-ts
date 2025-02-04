@@ -1,4 +1,4 @@
-export default class Heap {
+export default class MaxHeap {
     private heap: number[];
 
     constructor() {
@@ -38,5 +38,23 @@ export default class Heap {
             this.heap[index2],
             this.heap[index1],
         ];
+    }
+
+    insert(value: number) {
+        this.heap.push(value);
+        let current = this.heap.length - 1;
+
+        while (
+            // Condition 1: current is at NOT the root
+            current > 0 &&
+            // Condition 2: value at current is greater that it's parent
+            this.heap[current] > this.heap[this.parent(current)]
+        ) {
+            // 1. Swap value at current with it's parent
+            this.swap(current, this.parent(current));
+
+            // Moving current to it's parent's position
+            current = this.parent(current);
+        }
     }
 }
