@@ -5,7 +5,14 @@ import Graph from "@/implementations/graphs/barrett";
 
 const newGraph = new Graph();
 console.log(newGraph);
-newGraph.addVertex("A");
+
+console.log(newGraph.addVertex("A"));
+console.log(newGraph);
+console.log(newGraph.addVertex("B"));
+console.log(newGraph);
+console.log(newGraph.addEdge("A", "B"));
+console.log(newGraph);
+console.log(newGraph.addEdge("A", "B"));
 console.log(newGraph);
 
 export default function Home() {
