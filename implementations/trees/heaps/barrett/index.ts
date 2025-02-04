@@ -24,4 +24,12 @@ export default class Heap {
         // root at index 0
         return 2 * index + 2;
     }
+
+    private parent(index: number) {
+        // root at index 1
+        // return Math.floor(index / 2);
+
+        // root at index 0
+        return Math.floor((index - 1) / 2);
+    }
 }
