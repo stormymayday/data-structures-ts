@@ -34,4 +34,19 @@ export default class Graph {
         }
         return false;
     }
+
+    removeVertex(vertex: string): Graph | undefined {
+        if (!this.adjacencyList[vertex]) {
+            return undefined;
+        }
+
+        while (this.adjacencyList[vertex].length) {
+            const temp = this.adjacencyList[vertex].pop();
+            this.removeEdge(vertex, temp!);
+        }
+
+        delete this.adjacencyList[vertex];
+
+        return this;
+    }
 }

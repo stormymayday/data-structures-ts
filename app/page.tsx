@@ -7,25 +7,23 @@ const newGraph = new Graph();
 console.log(newGraph);
 
 console.log(newGraph.addVertex("A"));
-console.log(newGraph);
 console.log(newGraph.addVertex("B"));
-console.log(newGraph);
 console.log(newGraph.addVertex("C"));
-console.log(newGraph);
+console.log(newGraph.addVertex("D"));
+
 console.log(newGraph.addEdge("A", "B"));
-console.log(newGraph);
 console.log(newGraph.addEdge("A", "C"));
-console.log(newGraph);
-console.log(newGraph.addEdge("B", "C"));
+console.log(newGraph.addEdge("A", "D"));
+
+console.log(newGraph.addEdge("B", "D"));
+
+console.log(newGraph.addEdge("C", "D"));
 console.log(newGraph);
 
-console.log(newGraph.removeEdge("A", "B"));
+console.log(newGraph.removeVertex("D"));
 console.log(newGraph);
 
-console.log(newGraph.removeEdge("A", "C"));
-console.log(newGraph);
-
-console.log(newGraph.removeEdge("B", "C"));
+console.log(newGraph.removeVertex("E"));
 console.log(newGraph);
 
 export default function Home() {
