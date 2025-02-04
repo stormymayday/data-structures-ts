@@ -8,4 +8,12 @@ export default class Heap {
     getHeap() {
         return [...this.heap];
     }
+
+    private leftChild(index: number) {
+        // root at index 1
+        // return 2 * index;
+
+        // root at index 0
+        return 2 * index + 1;
+    }
 }
