@@ -57,4 +57,28 @@ export default class MaxHeap {
             current = this.parent(current);
         }
     }
+
+    remove() {
+        if (this.heap.length === 0) {
+            return null;
+        }
+
+        if (this.heap.length === 1) {
+            return this.heap.pop();
+        }
+
+        const maxValue = this.heap[0];
+        const lastValue = this.heap.pop();
+        // We know lastValue exists because we checked length > 1
+        if (lastValue !== undefined) {
+            this.heap[0] = lastValue;
+            this.sinkDown(0);
+        }
+
+        return maxValue;
+    }
+
+    private sinkDown(index: number) {
+        console.log(index);
+    }
 }
