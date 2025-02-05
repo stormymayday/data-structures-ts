@@ -3,14 +3,19 @@
 import MaxHeap from "@/implementations/trees/heaps/barrett";
 const myHeap = new MaxHeap();
 myHeap.insert(99);
-myHeap.insert(72);
-myHeap.insert(61);
-myHeap.insert(58);
+myHeap.insert(75);
+myHeap.insert(80);
+myHeap.insert(55);
+myHeap.insert(60);
+myHeap.insert(50);
+myHeap.insert(65);
 
 console.log(myHeap.getHeap());
-myHeap.insert(100);
+
+myHeap.remove();
 console.log(myHeap.getHeap());
-myHeap.insert(75);
+
+myHeap.remove();
 console.log(myHeap.getHeap());
 
 export default function Home() {

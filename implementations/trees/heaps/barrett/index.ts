@@ -79,6 +79,48 @@ export default class MaxHeap {
     }
 
     private sinkDown(index: number) {
-        console.log(index);
+        let maxIndex = index;
+        const size = this.heap.length;
+
+        while (true) {
+            const leftIndex = this.leftChild(index);
+            const rightIndex = this.rightChild(index);
+
+            // Look Left
+            if (
+                size > leftIndex &&
+                this.heap[leftIndex] > this.heap[maxIndex]
+            ) {
+                // Move maxIndex if
+                // 1. leftIndex (child) exists
+                // AND
+                // 2. value at leftIndex > value at maxIndex
+                maxIndex = leftIndex;
+            }
+
+            // Look Right
+            if (
+                size > rightIndex &&
+                this.heap[rightIndex] > this.heap[maxIndex]
+            ) {
+                // Move maxIndex if
+                // 1. rightIndex (child) exists
+                // AND
+                // 2. value ar rightIndex > value at maxIndex
+                maxIndex = rightIndex;
+            }
+
+            // Check if index and maxIndex are the same
+            if (index !== maxIndex) {
+                // Swap if not
+                this.swap(index, maxIndex);
+
+                // Move index down
+                index = maxIndex;
+            } else {
+                // Otherwise, break out of the loop
+                return;
+            }
+        }
     }
 }
