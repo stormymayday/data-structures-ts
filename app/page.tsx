@@ -1,6 +1,8 @@
 "use client";
 
-// import MaxHeap from "@/implementations/trees/heaps/barrett";
+import binarySearch from "@/implementations/search/binary/mine";
+
+console.log(binarySearch([1, 2, 3, 4, 5], 1));
 
 export default function Home() {
     return (
