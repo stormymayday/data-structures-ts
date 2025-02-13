@@ -1,22 +1,6 @@
 "use client";
 
-import MaxHeap from "@/implementations/trees/heaps/barrett";
-const myHeap = new MaxHeap();
-myHeap.insert(99);
-myHeap.insert(75);
-myHeap.insert(80);
-myHeap.insert(55);
-myHeap.insert(60);
-myHeap.insert(50);
-myHeap.insert(65);
-
-console.log(myHeap.getHeap());
-
-myHeap.remove();
-console.log(myHeap.getHeap());
-
-myHeap.remove();
-console.log(myHeap.getHeap());
+// import MaxHeap from "@/implementations/trees/heaps/barrett";
 
 export default function Home() {
     return (
