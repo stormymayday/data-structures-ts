@@ -1,5 +1,5 @@
 export default function binarySearch(arr: number[], target: number): number {
-    if (!arr.length) {
+    if (!arr.length || target < arr[0] || target > arr[arr.length - 1]) {
         return -1;
     }
 

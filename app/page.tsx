@@ -2,7 +2,7 @@
 
 import binarySearch from "@/implementations/search/binary/mine";
 
-console.log(binarySearch([1, 2, 3, 4, 5], 1));
+console.log(binarySearch([1, 2, 3, 4, 5], 4));
 
 export default function Home() {
     return (
