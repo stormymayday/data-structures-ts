@@ -1,8 +1,8 @@
 "use client";
 
-import selectionSort from "@/implementations/sorting/selection/steele";
+import insertionSort from "@/implementations/sorting/insertion/steele";
 
-console.log(selectionSort([3, 2, 1, 5]));
+console.log(insertionSort([3, 2, 1, 5]));
 
 export default function Home() {
     return (
