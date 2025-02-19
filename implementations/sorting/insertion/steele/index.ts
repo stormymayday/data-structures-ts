@@ -11,7 +11,9 @@ export default function insertionSort(arr: number[]): number[] {
             arr[j + 1] = arr[j];
         }
 
-        // insert currentVal into its correct position.
+        // after the loop finishes we found the correct sport for currentVal
+        // insert currentVal into its correct position
+        // one position after j's initial position
         arr[j + 1] = currentVal;
     }
 
