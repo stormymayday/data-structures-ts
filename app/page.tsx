@@ -1,8 +1,8 @@
 "use client";
 
-import insertionSort from "@/implementations/sorting/insertion/steele";
+import merge from "@/implementations/sorting/merge/steele";
 
-console.log(insertionSort([3, 2, 1, 5]));
+console.log(merge([1, 2, 3, 5], [0, 2, 6]));
 
 export default function Home() {
     return (
