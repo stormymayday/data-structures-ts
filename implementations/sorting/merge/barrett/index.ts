@@ -23,6 +23,8 @@ function merge(array1: number[], array2: number[]): number[] {
 }
 
 export default function mergeSort(array: number[]): number[] {
+    // Could cause issue if called on an empty array
+    // array.length <= 1 should be safer
     if (array.length === 1) {
         return array;
     }
