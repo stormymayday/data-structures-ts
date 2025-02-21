@@ -1,4 +1,4 @@
-export default function merge(array1: number[], array2: number[]): number[] {
+function merge(array1: number[], array2: number[]): number[] {
     const combined = [];
     let i = 0;
     let j = 0;
@@ -20,4 +20,16 @@ export default function merge(array1: number[], array2: number[]): number[] {
         j++;
     }
     return combined;
+}
+
+export default function mergeSort(array: number[]): number[] {
+    if (array.length === 1) {
+        return array;
+    }
+
+    const midIndex = Math.floor(array.length / 2);
+    const left = mergeSort(array.slice(0, midIndex));
+    const right = mergeSort(array.slice(midIndex));
+
+    return merge(left, right);
 }
