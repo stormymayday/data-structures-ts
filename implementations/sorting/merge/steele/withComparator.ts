@@ -1,4 +1,4 @@
-export default function merge<T>(
+function merge<T>(
     arr1: T[],
     arr2: T[],
     comparator?: (a: T, b: T) => number
@@ -40,4 +40,26 @@ export default function merge<T>(
     }
 
     return result;
+}
+
+export default function mergeSort<T>(
+    arr: T[],
+    comparator: (a: T, b: T) => number = (a: T, b: T): number => {
+        if (typeof a === "number" && typeof b === "number") {
+            return a - b;
+        }
+        throw new Error(
+            "Default comparator only works with numbers. Please provide a custom comparator for other types."
+        );
+    }
+): T[] {
+    if (arr.length <= 1) {
+        return arr;
+    }
+
+    const middle: number = Math.floor(arr.length / 2);
+    const left: T[] = mergeSort(arr.slice(0, middle), comparator);
+    const right: T[] = mergeSort(arr.slice(middle), comparator);
+
+    return merge(left, right, comparator);
 }
