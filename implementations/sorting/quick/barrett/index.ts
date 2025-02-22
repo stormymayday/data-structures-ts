@@ -1,10 +1,10 @@
-function swap(array: number[], firstIndex: number, secondIndex: number) {
+function swap(array: number[], firstIndex: number, secondIndex: number): void {
     const temp = array[firstIndex];
     array[firstIndex] = array[secondIndex];
     array[secondIndex] = temp;
 }
 
-export default function pivot(
+function pivot(
     array: number[],
     pivotIndex: number = 0,
     endIndex: number = array.length - 1
@@ -21,4 +21,19 @@ export default function pivot(
     swap(array, pivotIndex, swapIndex);
 
     return swapIndex;
+}
+
+export default function quickSort(
+    array: number[],
+    left = 0,
+    right = array.length - 1
+) {
+    if (left >= right) {
+        return array;
+    }
+    const pivotIndex = pivot(array, left, right);
+    quickSort(array, left, pivotIndex - 1);
+    quickSort(array, pivotIndex + 1, right);
+
+    return array;
 }

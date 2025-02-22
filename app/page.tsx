@@ -1,9 +1,8 @@
 "use client";
 
-// import quickSort from "@/implementations/sorting/quick/barrett";
-import quickSort from "@/implementations/sorting/quick/steele";
+import quickSort from "@/implementations/sorting/quick/barrett";
 
-console.log(quickSort([4, 2, 3, 5, 0, 2, 6]));
+console.log(quickSort([5, 1, 5, 5, 5]));
 
 export default function Home() {
     return (
