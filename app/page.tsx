@@ -1,8 +1,8 @@
 "use client";
 
-import mergeSort from "@/implementations/sorting/merge/steele";
+import pivot from "@/implementations/sorting/quick/steele";
 
-console.log(mergeSort([1, 2, 3, 5, 0, 2, 6]));
+console.log(pivot([4, 2, 3, 5, 0, 2, 6]));
 
 export default function Home() {
     return (
