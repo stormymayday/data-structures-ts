@@ -37,3 +37,29 @@ export function mostDigits(nums: number[]): number {
 
     return max;
 }
+
+export function radixSort(nums: number[]): number[] {
+    const maxDigitCount = mostDigits(nums);
+
+    for (let k = 0; k < maxDigitCount; k++) {
+        // Create an array of 10 empty arrays (buckets for digits 0-9)
+        const digitBuckets = Array.from({ length: 10 }, () => [] as number[]);
+
+        // Place numbers into the corresponding buckets based on the current digit
+        for (const num of nums) {
+            const digit = getDigit(num, k);
+            digitBuckets[digit].push(num);
+        }
+
+        // Flatten the buckets back into `nums`
+        const newNums: number[] = [];
+        for (const bucket of digitBuckets) {
+            for (const num of bucket) {
+                newNums.push(num);
+            }
+        }
+        nums = newNums;
+    }
+
+    return nums;
+}
