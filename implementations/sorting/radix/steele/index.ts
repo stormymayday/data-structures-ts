@@ -24,3 +24,16 @@ export function digitCount(num: number): number {
     // Step 5: Add 1 because logarithm gives the number of digits minus 1
     return Math.floor(Math.log10(Math.abs(num))) + 1;
 }
+
+export function mostDigits(nums: number[]): number {
+    let max = 0;
+
+    for (let i = 0; i < nums.length; i++) {
+        const currentValueCount = digitCount(nums[i]);
+        if (currentValueCount > max) {
+            max = currentValueCount;
+        }
+    }
+
+    return max;
+}
