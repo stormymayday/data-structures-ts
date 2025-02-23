@@ -1,34 +1,16 @@
 export default function getDigit(num: number, place: number): number {
-    // 1. Converting 'num' to absolute number (removes negative sign if it exists)
-    // Time Complexity: O(1) (Simple arithmetic operation)
-    // Space Complexity: O(1) (Single number stored)
+    // Step 1: Convert Number to Absolute Value
     const absNum = Math.abs(num);
 
-    // 2. Converting the number to a string
-    // Time Complexity: O(d) (Converting number with 'd' digits to a string)
-    // Space Complexity: O(d) (Storing string representation of the number)
-    const absStr = absNum.toString();
+    // Step 2: Raise 10 to the power of the 'place'
+    const tenToThePowerOfPlace = Math.pow(10, place);
 
-    // 3. Getting the index
-    // Time Complexity: O(1) (Simple arithmetic calculation)
-    // Space Complexity: O(1) (Single number stored)
-    const indexFromRight = absStr.length - 1 - place;
+    // Step 3: Shift the number to the right so that the desired digit is at the ones place
+    const shiftedNum = absNum / tenToThePowerOfPlace;
 
-    // 4. If place is out of bounds (less than zero), return 0
-    // Time Complexity: O(1) (Simple conditional check)
-    // Space Complexity: O(1) (No extra storage used)
-    if (indexFromRight < 0) {
-        return 0;
-    }
+    // Step 4: Extract the Rightmost Digit Using Modulo (% 10)
+    const rightmostDigit = Math.floor(shiftedNum) % 10;
 
-    // 5. Convert the character at the right index back to a number and return it
-    // Time Complexity: O(1) (String character access is O(1), Number conversion is O(1))
-    // Space Complexity: O(1) (Only a single number stored)
-    return Number(absStr[indexFromRight]);
-
-    // Final Time Complexity: O(d)
-    // (Converting the number to a string dominates the runtime.)
-
-    // Final Space Complexity: O(d)
-    // (The function stores the entire number as a string, which requires O(d) space.)
+    // Step 5: Return the extracted digit
+    return rightmostDigit;
 }
