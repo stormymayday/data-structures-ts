@@ -1,8 +1,12 @@
 "use client";
 
-import { radixSort } from "@/implementations/sorting/radix/steele";
+import SinglyLinkedList from "@/implementations/data-structures/linked-lists/sll/steele";
 
-console.log(radixSort([23, 346, 5563, 12, 2321, 9032]));
+const mySLL = new SinglyLinkedList();
+console.log(mySLL);
+console.log(mySLL.push("hi"));
+console.log(mySLL.push(2));
+console.log(mySLL.push(3));
 
 export default function Home() {
     return (
