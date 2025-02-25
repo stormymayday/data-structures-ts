@@ -8,10 +8,10 @@ console.log(mySLL.push(1));
 console.log(mySLL.push(2));
 console.log(mySLL.push(3));
 
-console.log(mySLL.pop());
-console.log(mySLL.pop());
-console.log(mySLL.pop());
-console.log(mySLL.pop());
+console.log(mySLL.shift());
+console.log(mySLL.shift());
+console.log(mySLL.shift());
+console.log(mySLL.shift());
 
 export default function Home() {
     return (
