@@ -134,18 +134,48 @@ export default class SinglyLinkedList<T> {
         return current;
     }
 
-    set(index: number, value: T): boolean {
+    set(index: number, val: T): boolean {
         // Use 'get' method to find the specific node
         const foundNode = this.get(index);
 
         if (foundNode) {
             // If the node is found, set the value of that node to be the value passed to the function
-            foundNode.val = value;
+            foundNode.val = val;
             //  and return true
             return true;
         } else {
             // If the node is not found, return false
             return false;
         }
+    }
+
+    insert(index: number, val: T): boolean {
+        // If the index is less than zero or greater than the length, return false
+        if (index < 0 || index > this.length) {
+            return false;
+        }
+
+        // If the index is the same as length
+        if (index === this.length) {
+            // push new node to the end of the list
+            this.push(val);
+            return true;
+        }
+
+        // If the index is 0
+        if (index === 0) {
+            // unshift a new node to the start of the list
+            this.unshift(val);
+            return true;
+        }
+
+        // Otherwise, using the 'get' method, access the node at the index - 1
+        const newNode = new Node(val);
+        const prev = this.get(index - 1);
+        const temp = prev?.next;
+        prev!.next = newNode;
+        newNode.next = temp as Node<T>;
+        this.length++;
+        return true;
     }
 }
