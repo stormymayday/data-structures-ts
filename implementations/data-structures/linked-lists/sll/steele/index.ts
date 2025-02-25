@@ -94,4 +94,24 @@ export default class SinglyLinkedList<T> {
         // Return the first node
         return currentHead;
     }
+
+    unshift(val: T): SinglyLinkedList<T> {
+        // Create a new node using the value passed to the function
+        const newNode = new Node(val);
+        // If there is no head property on the list
+        if (!this.head) {
+            // set head and tail to be the newly created node
+            this.head = newNode;
+            this.tail = this.head;
+        } else {
+            // Otherwise, set the newly created node's next property to be the current head property on the list
+            newNode.next = this.head;
+            // Set the head property on the list to be that newly created node
+            this.head = newNode;
+        }
+        // Increment the length by 1
+        this.length++;
+        // Return the linked list
+        return this;
+    }
 }
