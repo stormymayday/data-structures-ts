@@ -8,12 +8,7 @@ console.log(mySLL.push(1));
 console.log(mySLL.push(2));
 console.log(mySLL.push(3));
 
-console.log(mySLL.get(0));
-console.log(mySLL.get(1));
-console.log(mySLL.get(2));
-console.log(mySLL.get(3));
-console.log(mySLL.get(4));
-console.log(mySLL.get(5));
+console.log(mySLL.reverse());
 
 export default function Home() {
     return (

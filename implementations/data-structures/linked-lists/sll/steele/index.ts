@@ -205,4 +205,32 @@ export default class SinglyLinkedList<T> {
         // Return the removed node
         return removed as Node<T>;
     }
+
+    reverse(): SinglyLinkedList<T> {
+        // Create a variable called node and initialize it to the head property
+        let node = this.head;
+        // Swap the head and tail
+        this.head = this.tail;
+        this.tail = node;
+
+        // Create a variable called prev
+        let prev: Node<T> | null = null;
+
+        // Create a variable called next
+        let next: Node<T> | null = null;
+
+        // Loop through the list
+        for (let i = 0; i < this.length; i++) {
+            // Set next to be the next property on whatever node is
+            next = node!.next;
+            // Set the next property of the node to be whatever prev is
+            node!.next = prev;
+            // Set prev to be the value of the node variable
+            prev = node;
+            // Set the node variable to be the value of next variable
+            node = next;
+        }
+        // return the linked list
+        return this;
+    }
 }
