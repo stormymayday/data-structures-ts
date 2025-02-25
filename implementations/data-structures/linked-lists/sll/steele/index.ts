@@ -133,4 +133,19 @@ export default class SinglyLinkedList<T> {
         // Return node at specified index
         return current;
     }
+
+    set(index: number, value: T): boolean {
+        // Use 'get' method to find the specific node
+        const foundNode = this.get(index);
+
+        if (foundNode) {
+            // If the node is found, set the value of that node to be the value passed to the function
+            foundNode.val = value;
+            //  and return true
+            return true;
+        } else {
+            // If the node is not found, return false
+            return false;
+        }
+    }
 }
