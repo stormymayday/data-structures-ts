@@ -178,4 +178,31 @@ export default class SinglyLinkedList<T> {
         this.length++;
         return true;
     }
+
+    remove(index: number): Node<T> | undefined {
+        // If the index is less than zero or greater that the length return undefined
+        if (index < 0 || index >= this.length) {
+            return undefined;
+        }
+
+        // If the index is 0, shift
+        if (index === 0) {
+            return this.shift();
+        }
+
+        // If the index is he same as the length - 1, pop
+        if (index === this.length - 1) {
+            return this.pop();
+        }
+
+        // Otherwise, using the 'get' method, access the node at the index - 1
+        const previousNode = this.get(index - 1);
+        const removed = previousNode!.next;
+        // Set the next property on that node to be  the next of the next node
+        previousNode!.next = removed!.next;
+        // Decrement the length
+        this.length--;
+        // Return the removed node
+        return removed as Node<T>;
+    }
 }
