@@ -114,4 +114,23 @@ export default class SinglyLinkedList<T> {
         // Return the linked list
         return this;
     }
+
+    get(index: number): Node<T> | null {
+        // If the index is less than zero or greater than or equal to the length of list, return null
+        if (index < 0 || index >= this.length) {
+            return null;
+        }
+
+        let counter = 0;
+        let current: Node<T> | null = this.head;
+
+        // Loop through the list until you reach the index
+        while (counter !== index) {
+            current = current!.next;
+            counter++;
+        }
+
+        // Return node at specified index
+        return current;
+    }
 }
