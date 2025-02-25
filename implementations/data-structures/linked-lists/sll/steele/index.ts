@@ -31,4 +31,29 @@ export default class SinglyLinkedList<T> {
         this.length++;
         return this;
     }
+
+    pop(): Node<T> | undefined {
+        if (!this.head) {
+            return undefined;
+        }
+
+        let current: Node<T> | null = this.head;
+        let newTail: Node<T> | null = current;
+
+        while (current.next) {
+            newTail = current;
+            current = current.next;
+        }
+
+        this.tail = newTail;
+        this.tail.next = null;
+
+        this.length--;
+        if (this.length === 0) {
+            this.head = null;
+            this.tail = null;
+        }
+
+        return current;
+    }
 }

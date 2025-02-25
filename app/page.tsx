@@ -4,9 +4,14 @@ import SinglyLinkedList from "@/implementations/data-structures/linked-lists/sll
 
 const mySLL = new SinglyLinkedList();
 console.log(mySLL);
-console.log(mySLL.push("hi"));
+console.log(mySLL.push(1));
 console.log(mySLL.push(2));
 console.log(mySLL.push(3));
+
+console.log(mySLL.pop());
+console.log(mySLL.pop());
+console.log(mySLL.pop());
+console.log(mySLL.pop());
 
 export default function Home() {
     return (
