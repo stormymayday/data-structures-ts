@@ -1,4 +1,4 @@
-export default class CustomArray<T> {
+export default class ArrayList<T> {
     data: Record<string, T>;
     length: number;
 
