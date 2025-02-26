@@ -4,6 +4,9 @@ import ArrayList from "@/implementations/data-structures/array-list/mine";
 
 const myList = new ArrayList();
 console.log(myList);
+myList.push("first item");
+myList.push("second item");
+console.log(myList);
 
 export default function Home() {
     return (

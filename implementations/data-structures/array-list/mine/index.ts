@@ -15,7 +15,11 @@ export default class ArrayList<T> {
         return undefined;
     }
 
-    push() {}
+    push(item: T): number {
+        this.data[this.length] = item;
+        this.length++;
+        return this.length;
+    }
 
     pop() {}
 
