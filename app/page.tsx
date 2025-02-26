@@ -8,9 +8,7 @@ myList.push("first item");
 myList.push("second item");
 
 console.log(myList);
-console.log(myList.shift());
-console.log(myList);
-console.log(myList.shift());
+console.log(myList.unshift("new item"));
 console.log(myList);
 
 export default function Home() {

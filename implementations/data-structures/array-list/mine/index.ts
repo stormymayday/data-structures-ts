@@ -43,7 +43,17 @@ export default class ArrayList<T> {
         return firstItem;
     }
 
-    unshift() {}
+    unshift(item: T): number {
+        // Shift all elements one position to the right
+        for (let i = this.length; i > 0; i--) {
+            this.data[i] = this.data[i - 1];
+        }
+        // Insert the new item at index 0
+        this.data[0] = item;
+        // Increase the length
+        this.length++;
+        return this.length;
+    }
 
     get(index: number): T | undefined {
         // Checking if index is within bounds
