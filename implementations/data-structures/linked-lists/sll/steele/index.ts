@@ -235,18 +235,18 @@ export default class SinglyLinkedList<T> {
     }
 
     rotate(k: number): SinglyLinkedList<T> {
-        // Edge Case: if LL is empty
+        // Edge Case 1: if LL is empty
         if (!this.head) {
-            return this;
-        }
-
-        // If k === this.length we can return
-        if (k === this.length) {
             return this;
         }
 
         // Finding the actual number of rotations (if k > this.length)
         const numberOfRotations = k % this.length;
+
+        // Edge Case 2: If numberOfRotations === 0 we can return
+        if (numberOfRotations === 0) {
+            return this;
+        }
 
         // Finding the pivot / break point
         let current: Node<T> | null = this.head;
