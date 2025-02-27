@@ -69,4 +69,6 @@ export default class LinkedList<T> {
         // Returning removed (last) node
         return temp;
     }
+
+    unshift() {}
 }

@@ -233,4 +233,42 @@ export default class SinglyLinkedList<T> {
         // return the linked list
         return this;
     }
+
+    rotate(k: number): SinglyLinkedList<T> {
+        // Edge Case: if LL is empty
+        if (!this.head) {
+            return this;
+        }
+
+        // If k === this.length we can return
+        if (k === this.length) {
+            return this;
+        }
+
+        // Finding the actual number of rotations (if k > this.length)
+        const numberOfRotations = k % this.length;
+
+        // Finding the pivot / break point
+        let current: Node<T> | null = this.head;
+        for (let i = 0; i < this.length - numberOfRotations - 1; i++) {
+            if (current.next !== null) {
+                current = current.next;
+            }
+        }
+        // at this point 'current' is at the pivot point (new tail)
+
+        // point tail to the head
+        this.tail!.next = this.head;
+
+        // update head
+        this.head = current.next;
+
+        // update tail
+        this.tail = current;
+
+        // break the link at the pivot point
+        current.next = null;
+
+        return this;
+    }
 }
