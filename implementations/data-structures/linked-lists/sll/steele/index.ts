@@ -240,33 +240,36 @@ export default class SinglyLinkedList<T> {
             return this;
         }
 
+        //  Edge Case 2: Handle negative k (rotate left)
+        if (k < 0) {
+            k = this.length + k; // Convert negative rotations to positive
+        }
+
         // Finding the actual number of rotations (if k > this.length)
         const numberOfRotations = k % this.length;
 
-        // Edge Case 2: If numberOfRotations === 0 we can return
+        // Edge Case 3: No rotation needed
         if (numberOfRotations === 0) {
             return this;
         }
 
-        // Finding the pivot / break point
+        // Finding the pivot (new tail) node
         let current: Node<T> | null = this.head;
         for (let i = 0; i < this.length - numberOfRotations - 1; i++) {
             if (current.next !== null) {
                 current = current.next;
             }
         }
-        // at this point 'current' is at the pivot point (new tail)
+        // At this point, current is the new tail (pivot)
 
-        // point tail to the head
+        // Making the list circular
         this.tail!.next = this.head;
 
-        // update head
+        // Updating the head and tail
         this.head = current.next;
-
-        // update tail
         this.tail = current;
 
-        // break the link at the pivot point
+        // Breaking the circular link at the pivot
         current.next = null;
 
         return this;
