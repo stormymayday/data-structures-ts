@@ -9,7 +9,7 @@ myLinkedList.push(3);
 myLinkedList.push(4);
 myLinkedList.push(5);
 console.log(myLinkedList);
-myLinkedList.rotate(-2);
+myLinkedList.rotateRight(2);
 console.log(myLinkedList);
 
 export default function Home() {

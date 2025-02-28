@@ -234,15 +234,10 @@ export default class SinglyLinkedList<T> {
         return this;
     }
 
-    rotate(k: number): SinglyLinkedList<T> {
+    rotateRight(k: number): SinglyLinkedList<T> {
         // Edge Case 1: if LL is empty
         if (!this.head) {
             return this;
-        }
-
-        //  Edge Case 2: Handle negative k (rotate left)
-        if (k < 0) {
-            k = this.length + k; // Convert negative rotations to positive
         }
 
         // Finding the actual number of rotations (if k > this.length)
