@@ -269,4 +269,14 @@ export default class SinglyLinkedList<T> {
 
         return this;
     }
+
+    toArray(): Array<T> {
+        const result = [];
+        let current: Node<T> | null = this.head;
+        while (current) {
+            result.push(current.val);
+            current = current.next;
+        }
+        return result;
+    }
 }

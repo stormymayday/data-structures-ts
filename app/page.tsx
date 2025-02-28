@@ -8,9 +8,9 @@ myLinkedList.push(2);
 myLinkedList.push(3);
 myLinkedList.push(4);
 myLinkedList.push(5);
-console.log(myLinkedList);
+console.log(myLinkedList.toArray());
 myLinkedList.rotateRight(2);
-console.log(myLinkedList);
+console.log(myLinkedList.toArray());
 
 export default function Home() {
     return (
