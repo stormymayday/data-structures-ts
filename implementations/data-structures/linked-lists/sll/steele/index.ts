@@ -235,8 +235,8 @@ export default class SinglyLinkedList<T> {
     }
 
     rotateRight(k: number): SinglyLinkedList<T> {
-        // Edge Case 1: if LL is empty
-        if (!this.head) {
+        // Edge Cases: empty list, 1 element, k is less than or equal zero
+        if (!this.head || this.length <= 1 || k <= 0) {
             return this;
         }
 
@@ -251,6 +251,7 @@ export default class SinglyLinkedList<T> {
         // Finding the pivot (new tail) node
         let current: Node<T> | null = this.head;
         for (let i = 0; i < this.length - numberOfRotations - 1; i++) {
+            console.log(`ROTATING`);
             if (current.next !== null) {
                 current = current.next;
             }
@@ -266,6 +267,29 @@ export default class SinglyLinkedList<T> {
 
         // Breaking the circular link at the pivot
         current.next = null;
+
+        return this;
+    }
+
+    rotate(k: number): SinglyLinkedList<T> {
+        if (k >= 0) {
+            k = Math.abs(k) % this.length;
+        } else {
+            k = this.length + (k % this.length);
+        }
+
+        if (!this.head) {
+            return this;
+        }
+
+        this.tail!.next = this.head;
+
+        for (let i = 0; i < k; i++) {
+            this.head = this.head!.next;
+            this.tail = this.tail!.next;
+        }
+
+        this.tail!.next = null;
 
         return this;
     }
