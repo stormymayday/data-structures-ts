@@ -9,7 +9,7 @@ export default class Queue<T> {
         this.data.unshift(record);
     }
 
-    remove() {
+    remove(): T | undefined {
         return this.data.pop();
     }
 
