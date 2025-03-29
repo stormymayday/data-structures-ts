@@ -12,4 +12,8 @@ export default class Queue<T> {
     remove() {
         return this.data.pop();
     }
+
+    peek(): T | undefined {
+        return this.data[this.data.length - 1];
+    }
 }
