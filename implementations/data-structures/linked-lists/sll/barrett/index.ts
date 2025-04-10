@@ -181,4 +181,39 @@ export default class LinkedList<T> {
             return false;
         }
     }
+
+    remove(index: number): Node<T> | undefined {
+        // Edge Case: Checking if index is out of bounds
+        if (index < 0 || index >= this.length) {
+            return undefined;
+        }
+
+        // Removing the first node
+        if (index === 0) {
+            return this.shift();
+        }
+
+        // Removing the last node
+        if (index === this.length - 1) {
+            return this.pop();
+        }
+
+        // Retrieve the node before the one to be removed
+        const before = this.get(index - 1);
+
+        // Store the node to remove
+        const temp = before!.next!;
+
+        // Moving before's pointer past temp
+        before!.next = temp.next;
+
+        // Removing temp from the list
+        temp.next = null;
+
+        // Decrementing the length
+        this.length--;
+
+        // Returning the removed node
+        return temp;
+    }
 }
