@@ -120,4 +120,20 @@ export default class LinkedList<T> {
         // Return the removed node
         return temp;
     }
+
+    get(index: number): Node<T> | undefined {
+        // Edge Case: Checking if index is out of bounds or list is empty
+        if (index < 0 || index >= this.length || !this.head) {
+            return undefined;
+        }
+        // Start at the head
+        let temp = this.head;
+        // Traversing the list to the specified index
+        for (let i = 0; i < index; i++) {
+            // Move temp forward
+            temp = temp.next!;
+        }
+        // Return the node at the index
+        return temp;
+    }
 }
