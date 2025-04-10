@@ -150,4 +150,35 @@ export default class LinkedList<T> {
         // Otherwise, return false
         return false;
     }
+
+    insert(index: number, value: T): boolean {
+        // Checking if index is out of bounds
+        if (index < 0 || index > this.length) {
+            return false;
+        }
+
+        // Inserting at the beginning of the list
+        if (index === 0) {
+            this.unshift(value);
+            return true;
+        }
+
+        // Inserting at the end of the list
+        if (index === this.length) {
+            this.push(value);
+            return true;
+        }
+
+        // Inserting in the middle of the list
+        const newNode = new Node(value);
+        const temp = this.get(index - 1);
+        if (temp) {
+            newNode.next = temp.next;
+            temp.next = newNode;
+            this.length++;
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
