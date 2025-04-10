@@ -70,5 +70,26 @@ export default class LinkedList<T> {
         return temp;
     }
 
-    unshift() {}
+    unshift(value: T): LinkedList<T> {
+        // Create a new node with the given value
+        const newNode = new Node(value);
+
+        // Edge Case: Empty list
+        if (!this.head) {
+            // If the list is empty, set head and tail to the new node
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            // Point the new node's next to the current head
+            newNode.next = this.head;
+            // Update the head to be the new node
+            this.head = newNode;
+        }
+
+        // Increment the length
+        this.length++;
+
+        // Return the updated list
+        return this;
+    }
 }
