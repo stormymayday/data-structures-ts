@@ -136,4 +136,18 @@ export default class LinkedList<T> {
         // Return the node at the index
         return temp;
     }
+
+    set(index: number, value: T): boolean {
+        // Using the get method to retrieve the node at the specified index
+        const temp = this.get(index);
+
+        // If a node was found
+        if (temp) {
+            // Update its value and return true
+            temp.value = value;
+            return true;
+        }
+        // Otherwise, return false
+        return false;
+    }
 }
