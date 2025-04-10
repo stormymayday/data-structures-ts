@@ -216,4 +216,32 @@ export default class LinkedList<T> {
         // Returning the removed node
         return temp;
     }
+
+    reverse(): LinkedList<T> {
+        // Swapping head and tail
+        let temp = this.head;
+        this.head = this.tail;
+        this.tail = temp;
+
+        // Initializing pointers for reversal
+        let next: Node<T> | null = null;
+        let prev: Node<T> | null = null;
+
+        // Iterating through the list and reversing links
+        for (let i = 0; i < this.length; i++) {
+            // Move next forward
+            next = temp!.next;
+
+            // Reversing the current node's pointer
+            temp!.next = prev;
+
+            // Point perv to temp
+            prev = temp;
+
+            // Point temp to next
+            temp = next;
+        }
+
+        return this;
+    }
 }
