@@ -77,4 +77,13 @@ export default class LinkedList<T> {
         }
         previous.next = null;
     }
+
+    insertLast(data: T): void {
+        const last = this.getLast();
+        if (last) {
+            last.next = new Node(data);
+        } else {
+            this.head = new Node(data);
+        }
+    }
 }
