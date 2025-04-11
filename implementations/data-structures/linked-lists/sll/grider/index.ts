@@ -100,4 +100,25 @@ export default class LinkedList<T> {
         // index is out of bounds
         return null;
     }
+
+    removeAt(index: number): void {
+        // Edge Case 1: Empty List
+        if (!this.head) {
+            return;
+        }
+
+        // Edge Case 2: First Item
+        if (index === 0) {
+            this.head = this.head.next;
+            return;
+        }
+
+        const previous = this.getAt(index - 1);
+        // Edge Case 3: Index out of bounds
+        if (!previous || !previous.next) {
+            return;
+        }
+
+        previous.next = previous.next.next;
+    }
 }
