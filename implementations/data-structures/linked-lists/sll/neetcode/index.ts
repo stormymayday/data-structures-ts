@@ -30,4 +30,24 @@ export default class LinkedList {
         this.head = new ListNode(-1);
         this.tail = this.head;
     }
+
+    /**
+     * Retrieve value at index
+     * @param index - Index to retrieve value from
+     * @returns Value at index or -1 if index is out of bounds
+     */
+    get(index: number): number {
+        // Due to the 'dummy' node
+        let curr = this.head.next;
+        let i = 0;
+        while (curr) {
+            if (i === index) {
+                return curr.val;
+            }
+            i++;
+            curr = curr.next;
+        }
+        // Index out of bounds or list is empty
+        return -1;
+    }
 }
