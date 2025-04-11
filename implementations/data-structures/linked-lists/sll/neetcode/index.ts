@@ -50,4 +50,18 @@ export default class LinkedList {
         // Index out of bounds or list is empty
         return -1;
     }
+
+    /**
+     * Insert a new node at the head
+     * @param val - Value to insert
+     */
+    insertHead(val: number): void {
+        const newNode = new ListNode(val);
+        newNode.next = this.head.next;
+        this.head.next = newNode;
+        if (!newNode.next) {
+            // If list was empty before insertion
+            this.tail = newNode;
+        }
+    }
 }
