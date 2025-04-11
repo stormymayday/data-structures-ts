@@ -13,4 +13,8 @@ export default class LinkedList<T> {
     constructor() {
         this.head = null;
     }
+
+    insertFirst(data: T): void {
+        this.head = new Node(data, this.head);
+    }
 }
