@@ -121,4 +121,24 @@ export default class LinkedList<T> {
 
         previous.next = previous.next.next;
     }
+
+    insertAt(data: T, index: number): void {
+        // Inserts a new node with data at the 0 index when the list is empty
+        if (!this.head) {
+            this.head = new Node(data);
+            return;
+        }
+
+        // Inserts a new node with data at the 0 index when the list has elements
+        if (index === 0) {
+            this.insertFirst(data);
+            return;
+        }
+
+        // Inserts a new node with data at an index OR
+        // Inserts a new node at the end when index is out of bounds
+        const previous = this.getAt(index - 1) || this.getLast();
+        const node = new Node(data, previous!.next);
+        previous!.next = node;
+    }
 }
