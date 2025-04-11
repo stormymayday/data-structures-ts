@@ -73,4 +73,27 @@ export default class LinkedList {
         this.tail.next = new ListNode(val);
         this.tail = this.tail.next;
     }
+
+    /**
+     * Remove node at index
+     * @param index - Index to remove node from
+     * @returns True if removal was successful, false otherwise
+     */
+    remove(index: number): boolean {
+        let i = 0;
+        let curr: ListNode | null = this.head;
+        while (i < index && curr) {
+            i++;
+            curr = curr.next;
+        }
+        // Remove the node ahead of curr
+        if (curr && curr.next) {
+            if (curr.next === this.tail) {
+                this.tail = curr;
+            }
+            curr.next = curr.next.next;
+            return true;
+        }
+        return false;
+    }
 }
