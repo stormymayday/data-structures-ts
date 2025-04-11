@@ -149,4 +149,14 @@ export default class LinkedList<T> {
             node = node.next;
         }
     }
+
+    // Makes the list compatible with for...of loops
+    *[Symbol.iterator](): Generator<Node<T>> {
+        let node = this.head;
+
+        while (node) {
+            yield node;
+            node = node.next;
+        }
+    }
 }
