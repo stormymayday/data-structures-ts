@@ -64,4 +64,13 @@ export default class LinkedList {
             this.tail = newNode;
         }
     }
+
+    /**
+     * Insert a new node at the tail
+     * @param val - Value to insert
+     */
+    insertTail(val: number): void {
+        this.tail.next = new ListNode(val);
+        this.tail = this.tail.next;
+    }
 }
