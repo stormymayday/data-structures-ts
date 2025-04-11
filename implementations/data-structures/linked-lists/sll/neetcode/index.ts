@@ -37,7 +37,7 @@ export default class LinkedList {
      * @returns Value at index or -1 if index is out of bounds
      */
     get(index: number): number {
-        // Due to the 'dummy' node
+        // skipping past the 'dummy' node
         let curr = this.head.next;
         let i = 0;
         while (curr) {
@@ -56,11 +56,15 @@ export default class LinkedList {
      * @param val - Value to insert
      */
     insertHead(val: number): void {
+        // 1. Creating a new node
         const newNode = new ListNode(val);
+        // 2. Pointing newNodes next to the 'dummy' node's next (could be null)
         newNode.next = this.head.next;
+        // 3. Pointing 'dummy' node's next to the newNode
         this.head.next = newNode;
+        // Edge Case: list was empty before insertion
         if (!newNode.next) {
-            // If list was empty before insertion
+            // Pointing tail to the newNode
             this.tail = newNode;
         }
     }
