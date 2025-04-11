@@ -27,4 +27,23 @@ export default class LinkedList<T> {
         }
         return counter;
     }
+
+    getFirst(): Node<T> | null {
+        return this.head;
+    }
+
+    getLast(): Node<T> | null {
+        if (!this.head) {
+            return null;
+        }
+        let node = this.head;
+        while (node) {
+            if (!node.next) {
+                return node;
+            }
+            node = node.next;
+        }
+        // had to add this line
+        return node;
+    }
 }
