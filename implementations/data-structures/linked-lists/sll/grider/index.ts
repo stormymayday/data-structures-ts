@@ -86,4 +86,18 @@ export default class LinkedList<T> {
             this.head = new Node(data);
         }
     }
+
+    getAt(index: number): Node<T> | null {
+        let counter = 0;
+        let node = this.head;
+        while (node) {
+            if (counter === index) {
+                return node;
+            }
+            counter++;
+            node = node.next;
+        }
+        // index is out of bounds
+        return null;
+    }
 }
