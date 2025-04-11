@@ -82,18 +82,37 @@ export default class LinkedList {
     remove(index: number): boolean {
         let i = 0;
         let curr: ListNode | null = this.head;
+        // Move curr to node before target
         while (i < index && curr) {
             i++;
             curr = curr.next;
         }
-        // Remove the node ahead of curr
+
+        // if curr and target exist
         if (curr && curr.next) {
+            // if target is the tail
             if (curr.next === this.tail) {
+                // move tail back
                 this.tail = curr;
             }
+            // Remove the node ahead of curr
             curr.next = curr.next.next;
             return true;
         }
         return false;
+    }
+
+    /**
+     * Retrieve all values in the list
+     * @returns An array containing all values in the list
+     */
+    getValues(): number[] {
+        let curr = this.head.next;
+        const res: number[] = [];
+        while (curr) {
+            res.push(curr.val);
+            curr = curr.next;
+        }
+        return res;
     }
 }
