@@ -46,4 +46,8 @@ export default class LinkedList<T> {
         // had to add this line
         return node;
     }
+
+    clear(): void {
+        this.head = null;
+    }
 }
