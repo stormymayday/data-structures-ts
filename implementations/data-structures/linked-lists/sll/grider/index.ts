@@ -141,4 +141,12 @@ export default class LinkedList<T> {
         const node = new Node(data, previous!.next);
         previous!.next = node;
     }
+
+    forEach(fn: (node: Node<T>) => void): void {
+        let node = this.head;
+        while (node) {
+            fn(node);
+            node = node.next;
+        }
+    }
 }
