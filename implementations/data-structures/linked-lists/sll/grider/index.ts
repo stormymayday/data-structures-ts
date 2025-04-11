@@ -17,4 +17,14 @@ export default class LinkedList<T> {
     insertFirst(data: T): void {
         this.head = new Node(data, this.head);
     }
+
+    size(): number {
+        let counter = 0;
+        let node = this.head;
+        while (node) {
+            counter++;
+            node = node.next;
+        }
+        return counter;
+    }
 }
