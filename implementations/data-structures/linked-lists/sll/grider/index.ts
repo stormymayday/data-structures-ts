@@ -50,4 +50,12 @@ export default class LinkedList<T> {
     clear(): void {
         this.head = null;
     }
+
+    removeFirst(): void {
+        if (!this.head) {
+            return;
+        }
+
+        this.head = this.head.next;
+    }
 }
