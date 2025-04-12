@@ -74,8 +74,11 @@ export default class LinkedList {
      * @param val - Value to insert
      */
     insertTail(val: number): void {
+        // 1. Creating a new node and pointing tail's 'next' pointer at it
         this.tail.next = new ListNode(val);
+        // 2. Pointing tail to the new node
         this.tail = this.tail.next;
+        // Works for when the list is empty and non-empty
     }
 
     /**
@@ -85,14 +88,18 @@ export default class LinkedList {
      */
     remove(index: number): boolean {
         let i = 0;
+
+        // Starting at the 'dummy' node
         let curr: ListNode | null = this.head;
-        // Move curr to node before target
+
+        // Therefore, curr ends up on the node before the target
         while (i < index && curr) {
+            // While 'i' is less than the 'index' AND 'curr' is not null
             i++;
             curr = curr.next;
         }
 
-        // if curr and target exist
+        // if curr and target exist ('index' is not out of bounds)
         if (curr && curr.next) {
             // if target is the tail
             if (curr.next === this.tail) {
@@ -103,6 +110,7 @@ export default class LinkedList {
             curr.next = curr.next.next;
             return true;
         }
+        // index was out of bounds
         return false;
     }
 
@@ -111,6 +119,7 @@ export default class LinkedList {
      * @returns An array containing all values in the list
      */
     getValues(): number[] {
+        // Skipping the 'dummy' node
         let curr = this.head.next;
         const res: number[] = [];
         while (curr) {
