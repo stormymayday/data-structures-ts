@@ -50,4 +50,18 @@ export default class DoublyLinkedList<T> {
         this.length--;
         return temp as Node<T>;
     }
+
+    unshift(value: T): DoublyLinkedList<T> {
+        const newNode = new Node(value);
+        if (!this.head) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            newNode.next = this.head;
+            this.head.prev = newNode;
+            this.head = newNode;
+        }
+        this.length++;
+        return this;
+    }
 }
