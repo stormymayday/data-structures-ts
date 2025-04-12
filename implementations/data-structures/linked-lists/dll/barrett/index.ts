@@ -33,4 +33,21 @@ export default class DoublyLinkedList<T> {
         this.length++;
         return this;
     }
+
+    pop(): Node<T> | undefined {
+        if (this.length === 0) {
+            return undefined;
+        }
+        const temp = this.tail;
+        if (this.length === 1) {
+            this.head = null;
+            this.tail = null;
+        } else {
+            this.tail = this.tail!.prev;
+            this.tail!.next = null;
+            temp!.prev = null;
+        }
+        this.length--;
+        return temp as Node<T>;
+    }
 }
