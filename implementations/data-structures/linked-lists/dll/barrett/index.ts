@@ -108,4 +108,31 @@ export default class DoublyLinkedList<T> {
         }
         return false;
     }
+
+    insert(index: number, value: T): boolean {
+        if (index < 0 || index > this.length) {
+            return false;
+        }
+        if (index === 0) {
+            this.unshift(value);
+            return true;
+        }
+        if (index === this.length) {
+            this.push(value);
+            return true;
+        }
+
+        const newNode = new Node(value);
+        const before = this.get(index - 1);
+        const after = before!.next;
+
+        newNode.next = after;
+        after!.prev = newNode;
+
+        before!.next = newNode;
+        newNode.prev = before!;
+
+        this.length++;
+        return true;
+    }
 }
