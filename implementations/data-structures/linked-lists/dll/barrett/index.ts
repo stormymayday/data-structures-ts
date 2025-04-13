@@ -99,4 +99,13 @@ export default class DoublyLinkedList<T> {
         }
         return temp as Node<T>;
     }
+
+    set(index: number, value: T): boolean {
+        const temp = this.get(index);
+        if (temp) {
+            temp.value = value;
+            return true;
+        }
+        return false;
+    }
 }
