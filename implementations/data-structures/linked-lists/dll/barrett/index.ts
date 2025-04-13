@@ -135,4 +135,29 @@ export default class DoublyLinkedList<T> {
         this.length++;
         return true;
     }
+
+    remove(index: number): boolean {
+        if (index < 0 || index >= this.length) {
+            return false;
+        }
+        if (index === 0) {
+            this.shift();
+            return true;
+        }
+        if (index === this.length - 1) {
+            this.pop();
+            return true;
+        }
+
+        const temp = this.get(index);
+
+        temp!.prev!.next = temp!.next;
+        temp!.next!.prev = temp!.prev;
+
+        temp!.next = null;
+        temp!.prev = null;
+
+        this.length--;
+        return true;
+    }
 }
