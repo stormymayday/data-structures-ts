@@ -61,7 +61,24 @@ export default class LRU<K, V> {
         return node.value;
     }
 
-    detach(node: Node<V>): void {}
+    detach(node: Node<V>): void {
+        if (node.prev) {
+            node.prev.next = node.next;
+        }
+        if (node.next) {
+            node.next.prev = node.prev;
+        }
+        // Edge Cases: Head & Tail
+        if (this.head === node) {
+            this.head = this.head.next;
+        }
+        if (this.tail === node) {
+            this.tail = this.tail.prev;
+        }
+
+        node.next = undefined;
+        node.prev = undefined;
+    }
 
     prepend(node: Node<V>): void {}
 
