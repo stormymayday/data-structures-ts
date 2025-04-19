@@ -80,7 +80,18 @@ export default class LRU<K, V> {
         node.prev = undefined;
     }
 
-    prepend(node: Node<V>): void {}
+    prepend(node: Node<V>): void {
+        // If the list is empty
+        if (!this.head) {
+            this.head = this.tail = node;
+            return;
+        }
+        // Connect node to current head
+        node.next = this.head;
+        this.head.prev = node;
+        // Update head pointer
+        this.head = node;
+    }
 
     trimCache(): void {}
 }
