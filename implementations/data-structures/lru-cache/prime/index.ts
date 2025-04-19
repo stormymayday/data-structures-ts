@@ -1,3 +1,10 @@
+// Doubly linked list node structure
+type Node<T> = {
+    value: T;
+    next?: Node<T>;
+    prev?: Node<T>;
+};
+
 export default class LRU<K, V> {
     private length: number;
 
