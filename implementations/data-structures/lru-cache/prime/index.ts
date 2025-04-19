@@ -93,5 +93,22 @@ export default class LRU<K, V> {
         this.head = node;
     }
 
-    trimCache(): void {}
+    trimCache(): void {
+        // If we're under capacity, do nothing
+        if (this.length <= this.capacity) {
+            return;
+        }
+
+        const tail = this.tail as Node<V>;
+
+        this.detach(this.tail as Node<V>);
+
+        const key = this.reverseLookup.get(tail) as K;
+
+        this.lookup.delete(key);
+
+        this.reverseLookup.delete(tail);
+
+        this.length--;
+    }
 }
