@@ -28,10 +28,22 @@ export default class LRU<K, V> {
 
     update(key: K, value: V): void {
         // Does it exist?
-        // this.get(key)
-        // If it doesn't, we need to insert
-        // - check capacity and evict if over
-        // If it does, we need to update to the value and move it to the front of the list
+        let node = this.lookup.get(key);
+        // If it doesn't
+        if (!node) {
+            // we need to insert
+            node = createNode(value);
+            this.length++;
+            this.prepend(node);
+            // check capacity and evict if over
+            this.trimCache();
+        }
+        // If it does
+        else {
+            // we need to update to the value and move it to the front of the list
+            this.detach(node);
+            this.prepend(node);
+        }
     }
 
     get(key: K): V | undefined {
@@ -52,4 +64,6 @@ export default class LRU<K, V> {
     detach(node: Node<V>): void {}
 
     prepend(node: Node<V>): void {}
+
+    trimCache(): void {}
 }
