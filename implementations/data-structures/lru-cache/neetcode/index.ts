@@ -42,6 +42,27 @@ export default class LRUCache<K, V> {
         return node.value;
     }
 
+    put(key: K, value: V): void {
+        if (this.cache.has(key)) {
+            const node = this.cache.get(key);
+            if (node) {
+                this.detach(node);
+            }
+        }
+
+        const newNode = new Node(key, value);
+        this.cache.set(key, newNode);
+        this.append(newNode);
+
+        if (this.cache.size > this.capacity) {
+            const lru = this.left.next;
+            if (lru) {
+                this.detach(lru);
+                this.cache.delete(lru.key);
+            }
+        }
+    }
+
     detach(node: Node<K, V>): void {}
 
     append(node: Node<K, V>): void {}
