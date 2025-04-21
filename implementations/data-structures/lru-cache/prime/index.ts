@@ -35,14 +35,20 @@ export default class LRU<K, V> {
             node = createNode(value);
             this.length++;
             this.prepend(node);
+
             // check capacity and evict if over
             this.trimCache();
+
+            this.lookup.set(key, node);
+            this.reverseLookup.set(node, key);
         }
         // If it does
         else {
-            // we need to update to the value and move it to the front of the list
+            // move it to the front of the list
             this.detach(node);
             this.prepend(node);
+            // update to the value
+            node.value = value;
         }
     }
 
