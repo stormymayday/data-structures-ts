@@ -29,4 +29,20 @@ export default class LRUCache<K, V> {
         this.left.next = this.right;
         this.right.prev = this.left;
     }
+
+    get(key: K): V | undefined {
+        const node = this.cache.get(key);
+
+        if (!node) {
+            return undefined;
+        }
+
+        this.detach(node);
+        this.append(node);
+        return node.value;
+    }
+
+    detach(node: Node<K, V>): void {}
+
+    append(node: Node<K, V>): void {}
 }
