@@ -63,7 +63,16 @@ export default class LRUCache<K, V> {
         }
     }
 
-    detach(node: Node<K, V>): void {}
+    detach(node: Node<K, V>): void {
+        const prev = node.prev;
+        const next = node.next;
+        if (prev) {
+            prev.next = next;
+        }
+        if (next) {
+            next.prev = prev;
+        }
+    }
 
     append(node: Node<K, V>): void {}
 }
