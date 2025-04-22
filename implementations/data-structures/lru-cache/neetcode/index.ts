@@ -74,5 +74,16 @@ export default class LRUCache<K, V> {
         }
     }
 
-    append(node: Node<K, V>): void {}
+    // Insert node just before the right (dummy) node
+    // This places it at the "most recently used" position
+    append(node: Node<K, V>): void {
+        const prev = this.right.prev!;
+        const next = this.right;
+
+        prev.next = node;
+        next.prev = node;
+
+        node.prev = prev;
+        node.next = next;
+    }
 }
