@@ -16,33 +16,42 @@ export default class BST<T> {
     }
 
     insert(value: T): BST<T> | undefined {
+        // Step 1: create a node with a given value
         const newNode = new Node(value);
+
+        // Edge Case: Empty Tree
         if (this.root === null) {
             this.root = newNode;
             return this;
         }
+
+        // Start from the root
         let temp = this.root;
         while (true) {
+            // Edge Case: value already exists
             if (newNode.value === temp.value) {
-                // Duplicate value, do not insert
                 return undefined;
             }
+
+            // Value is less than current node's value
             if (newNode.value < temp.value) {
+                // Left spot is open
                 if (temp.left === null) {
-                    // Insert as left child
-                    temp.left = newNode;
+                    temp.left = newNode; // Insert as left child
                     return this;
                 }
-                // Traverse left
-                temp = temp.left;
-            } else {
+                // Left spot is occupied
+                temp = temp.left; // Traverse left
+            }
+            // Value is greater than current node's value
+            else {
+                // Right spot is open
                 if (temp.right === null) {
-                    // Insert as right child
-                    temp.right = newNode;
+                    temp.right = newNode; // Insert as right child
                     return this;
                 }
-                // Traverse right
-                temp = temp.right;
+                // Right spot is occupied
+                temp = temp.right; // Traverse right
             }
         }
     }
