@@ -57,19 +57,32 @@ export default class BST<T> {
     }
 
     contains(value: T): boolean {
+        // Edge Case: Empty Tree
         if (this.root === null) {
             return false;
         }
+
+        // Start at the root
         let temp: Node<T> | null = this.root;
+
+        // Iterate until temp runs into 'null' or the value is found
         while (temp) {
+            // value is less than current
             if (value < temp.value) {
+                // go left
                 temp = temp.left;
-            } else if (value > temp.value) {
+            }
+            // value is greater than current
+            else if (value > temp.value) {
+                // go right
                 temp = temp.right;
             } else {
+                // value is equal
                 return true;
             }
         }
+
+        // value was not found
         return false;
     }
 }
