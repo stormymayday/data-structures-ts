@@ -1,21 +1,21 @@
-class Node<T> {
-    value: T;
-    left: Node<T> | null;
-    right: Node<T> | null;
-    constructor(value: T) {
+class Node {
+    value: number;
+    left: Node | null;
+    right: Node | null;
+    constructor(value: number) {
         this.value = value;
         this.left = null;
         this.right = null;
     }
 }
 
-export default class BST<T> {
-    root: Node<T> | null;
+export default class BST {
+    root: Node | null;
     constructor() {
         this.root = null;
     }
 
-    insert(value: T): BST<T> | undefined {
+    insert(value: number): BST | undefined {
         // Step 1: create a node with a given value
         const newNode = new Node(value);
 
@@ -56,14 +56,14 @@ export default class BST<T> {
         }
     }
 
-    contains(value: T): boolean {
+    contains(value: number): boolean {
         // Edge Case: Empty Tree
         if (this.root === null) {
             return false;
         }
 
         // Start at the root
-        let temp: Node<T> | null = this.root;
+        let temp: Node | null = this.root;
 
         // Iterate until temp runs into 'null' or the value is found
         while (temp) {
