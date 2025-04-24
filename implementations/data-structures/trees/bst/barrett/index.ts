@@ -1,7 +1,7 @@
-class Node {
+class TreeNode {
     value: number;
-    left: Node | null;
-    right: Node | null;
+    left: TreeNode | null;
+    right: TreeNode | null;
     constructor(value: number) {
         this.value = value;
         this.left = null;
@@ -10,14 +10,14 @@ class Node {
 }
 
 export default class BST {
-    root: Node | null;
+    root: TreeNode | null;
     constructor() {
         this.root = null;
     }
 
     insert(value: number): BST | undefined {
         // Step 1: create a node with a given value
-        const newNode = new Node(value);
+        const newNode = new TreeNode(value);
 
         // Edge Case: Empty Tree
         if (this.root === null) {
@@ -63,7 +63,7 @@ export default class BST {
         }
 
         // Start at the root
-        let temp: Node | null = this.root;
+        let temp: TreeNode | null = this.root;
 
         // Iterate until temp runs into 'null' or the value is found
         while (temp) {
