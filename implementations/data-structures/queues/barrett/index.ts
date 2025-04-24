@@ -1,15 +1,15 @@
-class ListNode {
-    value: number;
-    next: ListNode | null;
-    constructor(value: number) {
+class ListNode<T> {
+    value: T;
+    next: ListNode<T> | null;
+    constructor(value: T) {
         this.value = value;
         this.next = null;
     }
 }
 
-export default class Queue {
-    first: ListNode | null;
-    last: ListNode | null;
+export default class Queue<T> {
+    first: ListNode<T> | null;
+    last: ListNode<T> | null;
     length: number;
 
     constructor() {
@@ -18,7 +18,7 @@ export default class Queue {
         this.length = 0;
     }
 
-    enqueue(value: number): Queue {
+    enqueue(value: T): Queue<T> {
         const newNode = new ListNode(value);
 
         // check if queue is empty
@@ -35,7 +35,7 @@ export default class Queue {
         return this;
     }
 
-    dequeue(): ListNode | undefined {
+    dequeue(): T | undefined {
         // check if queue is empty
         if (this.length === 0) {
             return undefined;
@@ -48,6 +48,6 @@ export default class Queue {
         if (this.length === 0) {
             this.last = null;
         }
-        return temp as ListNode;
+        return temp!.value;
     }
 }

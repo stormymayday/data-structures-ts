@@ -1,3 +1,5 @@
+import Queue from "@/implementations/data-structures/queues/barrett";
+
 class TreeNode {
     value: number;
     left: TreeNode | null;
@@ -84,5 +86,41 @@ export default class BST {
 
         // value was not found
         return false;
+    }
+
+    BFS(): number[] {
+        // Set pointer at the root
+        let currentNode = this.root;
+
+        // Edge Case: Empty Tree
+        if (!currentNode) {
+            return [];
+        }
+
+        // Initialize a queue and results array
+        const queue = new Queue();
+        const results = [];
+
+        // Enqueue the root
+        queue.enqueue(currentNode);
+
+        // Iterate while queue is not empty
+        while (queue.length !== 0) {
+            currentNode = queue.dequeue() as TreeNode;
+
+            results.push(currentNode.value);
+
+            // check left
+            if (currentNode.left) {
+                queue.enqueue(currentNode.left); // enqueue if left exists
+            }
+
+            // check right
+            if (currentNode.right) {
+                queue.enqueue(currentNode.right); // enqueue if right exists
+            }
+        }
+
+        return results;
     }
 }
