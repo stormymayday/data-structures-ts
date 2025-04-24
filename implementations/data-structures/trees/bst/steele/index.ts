@@ -93,4 +93,32 @@ export default class BinarySearchTree {
             return current!;
         }
     }
+
+    contains(value: number): boolean {
+        // check if root is null
+        if (this.root === null) {
+            return false;
+        }
+
+        // start at the root
+        let current: Node | null = this.root;
+        // iterate until current runs into null or the value is found
+        while (current) {
+            // value is less than current
+            if (value < current.value) {
+                current = current.left; // traverse left
+            }
+            // value is greater than current
+            else if (value > current.value) {
+                current = current.right; // traverse right
+            }
+            // value equals to current
+            else {
+                return true;
+            }
+        }
+
+        // value was not found
+        return false;
+    }
 }
