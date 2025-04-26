@@ -176,4 +176,31 @@ export default class BinarySearchTree {
 
         return data;
     }
+
+    DFSPostOrder(): number[] {
+        if (!this.root) {
+            return [];
+        }
+
+        const data: number[] = [];
+
+        function traverse(node: Node) {
+            // 1. Traverse Left
+            if (node.left) {
+                traverse(node.left);
+            }
+
+            // 2. Traverse right
+            if (node.right) {
+                traverse(node.right);
+            }
+
+            // 3. Visit the node
+            data.push(node.value);
+        }
+
+        traverse(this.root);
+
+        return data;
+    }
 }
