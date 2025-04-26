@@ -183,4 +183,34 @@ export default class BST {
 
         return results;
     }
+
+    DFSInOrder(): number[] {
+        // Edge Case: Empty Tree
+        if (!this.root) {
+            return [];
+        }
+
+        const results: number[] = [];
+
+        // helper recursive function
+        function traverse(currentNode: TreeNode) {
+            // 1. Recursively visit left subtree
+            if (currentNode.left) {
+                traverse(currentNode.left);
+            }
+
+            // 2. Visit current node
+            results.push(currentNode.value);
+
+            // 3. Recursively visit right subtree
+            if (currentNode.right) {
+                traverse(currentNode.right);
+            }
+        }
+
+        // Kick off with the root
+        traverse(this.root);
+
+        return results;
+    }
 }
