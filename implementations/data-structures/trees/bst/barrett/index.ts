@@ -88,6 +88,33 @@ export default class BST {
         return false;
     }
 
+    rContains(
+        value: number,
+        currentNode: TreeNode | null = this.root
+    ): boolean {
+        // Base Case 1: current node is null
+        if (currentNode === null) {
+            return false;
+        }
+
+        // Base Case 2: value equals current node's value
+        if (value === currentNode.value) {
+            return true;
+        }
+
+        // Recursive cases:
+        // If the value is less than the current node's value
+        if (value < currentNode.value) {
+            // recursively search in the left subtree
+            return this.rContains(value, currentNode.left);
+        }
+        // If the value is greater than the current node's value
+        else {
+            // recursively search in the right subtree
+            return this.rContains(value, currentNode.right);
+        }
+    }
+
     BFS(): number[] {
         // Set pointer at the root
         let currentNode = this.root;
