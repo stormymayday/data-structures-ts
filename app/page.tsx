@@ -4,17 +4,16 @@ import BST from "@/implementations/data-structures/trees/bst/barrett";
 
 const tree = new BST();
 
-console.log(tree);
+// console.log(tree);
 
-tree.insert(5);
-tree.insert(3);
-tree.insert(6);
-tree.insert(2);
-tree.insert(7);
-tree.insert(4);
-tree.insert(9);
+console.log(tree.rInsert(5));
+console.log(tree.rInsert(5));
+console.log(tree.rInsert(1));
+console.log(tree.rInsert(6));
+console.log(tree.rInsert(2));
+console.log(tree.rInsert(8));
 
-console.log(tree.BFS());
+console.log(tree.DFSInOrder());
 
 export default function Home() {
     return (

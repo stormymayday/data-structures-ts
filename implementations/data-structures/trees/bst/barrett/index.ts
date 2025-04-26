@@ -58,6 +58,41 @@ export default class BST {
         }
     }
 
+    // Private helper method
+    #rInsert(
+        value: number,
+        currentNode: TreeNode | null = this.root
+    ): TreeNode | null {
+        // Base case: empty spot found
+        if (currentNode === null) {
+            return new TreeNode(value);
+        }
+
+        // Recursive case: insert into left subtree
+        if (value < currentNode.value) {
+            currentNode.left = this.#rInsert(value, currentNode.left);
+        }
+        // Recursive case: insert into right subtree
+        else if (value > currentNode.value) {
+            currentNode.right = this.#rInsert(value, currentNode.right);
+        }
+
+        // Return the (potentially modified) current node
+        return currentNode;
+    }
+
+    // Public method
+    rInsert(value: number): BST | undefined {
+        // Edge case: handle empty tree
+        if (this.root === null) {
+            this.root = new TreeNode(value);
+        }
+
+        // Start recursion from root
+        this.#rInsert(value, this.root);
+        return this;
+    }
+
     contains(value: number): boolean {
         // Edge Case: Empty Tree
         if (this.root === null) {
