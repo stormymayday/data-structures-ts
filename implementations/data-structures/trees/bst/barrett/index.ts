@@ -83,7 +83,7 @@ export default class BST {
     }
 
     // Public method
-    rInsert(value: number): BST | undefined {
+    rInsert(value: number): BST {
         // Edge case: handle empty tree
         if (this.root === null) {
             this.root = new TreeNode(value);
