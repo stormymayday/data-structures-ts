@@ -62,7 +62,7 @@ export default class BST {
     #rInsert(
         value: number,
         currentNode: TreeNode | null = this.root
-    ): TreeNode | null {
+    ): TreeNode {
         // Base case: empty spot found
         if (currentNode === null) {
             return new TreeNode(value);
