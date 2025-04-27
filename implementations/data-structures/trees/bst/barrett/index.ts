@@ -151,6 +151,13 @@ export default class BST {
         }
     }
 
+    minValue(currentNode: TreeNode): number {
+        while (currentNode.left !== null) {
+            currentNode = currentNode.left;
+        }
+        return currentNode.value;
+    }
+
     BFS(): number[] {
         // Set pointer at the root
         let currentNode = this.root;
