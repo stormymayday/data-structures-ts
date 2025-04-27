@@ -78,6 +78,7 @@ export default class BST {
         }
 
         // Return the (potentially modified) current node
+        // If a node with the given value already exists, it will just return that node as 'currentNode'
         return currentNode;
     }
 
