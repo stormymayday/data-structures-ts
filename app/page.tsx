@@ -15,6 +15,11 @@ console.log(tree.rInsert(8));
 
 console.log(tree.DFSInOrder());
 
+tree.deleteNode(5);
+console.log(tree);
+
+console.log(tree.DFSInOrder());
+
 export default function Home() {
     return (
         <div className="h-[100vh] flex items-center justify-center u">

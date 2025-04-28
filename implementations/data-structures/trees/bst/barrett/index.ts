@@ -151,6 +151,55 @@ export default class BST {
         }
     }
 
+    #deleteNode(value: number, currentNode: TreeNode | null): TreeNode | null {
+        // Base Case: value doesn't exist
+        if (currentNode === null) {
+            return null;
+        }
+
+        // Recursive Cases:
+        // If the value is less than the current node's value
+        if (value < currentNode.value) {
+            currentNode.left = this.#deleteNode(value, currentNode.left);
+        }
+        // If the value is greater than the current node's value
+        else if (value > currentNode.value) {
+            currentNode.right = this.#deleteNode(value, currentNode.right);
+        }
+        // Value equals current node's value
+        else {
+            // Target node is a leaf node
+            if (currentNode.left === null && currentNode.right === null) {
+                return null;
+            }
+            // Target node only has a child on the right
+            else if (currentNode.left === null) {
+                currentNode = currentNode.right;
+            }
+            // Target node only has a child on the left
+            else if (currentNode.right === null) {
+                currentNode = currentNode.left;
+            }
+            // Target node has both children
+            else {
+                // Getting the minValue for the current subTree
+                const subTreeMin: number = this.minValue(currentNode.right);
+                // Setting subTreeMin as currentNode's value
+                currentNode.value = subTreeMin;
+                // Deleting the node with subTreeMin
+                currentNode.right = this.#deleteNode(
+                    subTreeMin,
+                    currentNode.right
+                );
+            }
+        }
+        return currentNode;
+    }
+
+    deleteNode(value: number): void {
+        this.root = this.#deleteNode(value, this.root);
+    }
+
     minValue(currentNode: TreeNode): number {
         while (currentNode.left !== null) {
             currentNode = currentNode.left;
